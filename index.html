@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javaScriptQuiz</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section>
+      <div class="startContainer">
+        <h1>JavaScript Quiz</h1>
+        <p id="instructions">
+          <span id="rules">The Rules and Such....</span>
+          <br />
+          <br />
+          When you're ready to put your JavaScript skills to the test, click the
+          "Let the Game Begin!" button. You will be given a series of multiple
+          choice questions all about JavaScript. You have 1 minute to complete
+          the quiz. That's 60 little seconds. You will earn 1 point for each
+          question answered correctly. Answer a question incorrectly, then 10
+          seconds will be subracted from the clock!
+          <br />
+          On ya mark. Get set.....
+
+          <button id="startGame">Let the Game Begin!</button>
+        </p>
+      </div>
+    </section>
+    <div class="correctWrapper Hidden"></div>
+    <div class="quizContainer">
+      <div id="questions"></div>
+      <button id="answerA"></button>
+      <br>
+      <br>
+      <button id="answerB"></button>
+      <br>
+      <br>
+      <button id="answerC"></button>
+      <br>
+      <br>
+      <button id="answerD"></button>
+      <br>
+      <br>
+    </div>
+
+    <div id="countdown">Time: 60</div>
+    <div>Correct Answers:0<span id="correctCount"></span></div>
+    <div>High Score<span id ="highScore">0</span> </div>
+
+    <div id="results"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
