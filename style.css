@@ -25,13 +25,22 @@ position: relative;
     align-items: center;
 }
 
-.startContainer{
+#startContainer{
     text-align: center;
     margin-top: 50px;
     margin-left: 600px;
     margin-right: 600px;
     }
 
+#gamestats{
+    margin-top: 50px;
+    margin-left: 25px;
+    border: rgb(189, 17, 31) dashed 5px;
+    width: 200px;
+    text-align: center;
+    display: felx;
+    font-size: 30px;
+    }
 #countdown {
     background-color: white;
     font-size: 20px;

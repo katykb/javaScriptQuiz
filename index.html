@@ -12,7 +12,7 @@
   </head>
   <body>
     <section>
-      <div class="startContainer">
+      <div id="startContainer">
         <h1>JavaScript Quiz</h1>
         <p id="instructions">
           <span id="rules">The Rules and Such....</span>
@@ -35,25 +35,23 @@
     <div class="quizContainer">
       <div id="questions"></div>
       <button id="answerA"></button>
-      <br>
-      <br>
+      <br />
+      <br />
       <button id="answerB"></button>
-      <br>
-      <br>
+      <br />
+      <br />
       <button id="answerC"></button>
-      <br>
-      <br>
+      <br />
+      <br />
       <button id="answerD"></button>
-      <br>
-      <br>
+      <br />
+      <br />
     </div>
-
-    <div id="countdown">Time: 60</div>
-    <div>Correct Answers:0<span id="correctCount"></span></div>
-    <div>High Score<span id ="highScore">0</span> </div>
-
-    <div id="results"></div>
-
+    <section id="gamestats">
+      <div id="countdown">Time: 60</div>
+      <div>Correct Answers:0<span id="correctCount"></span></div>
+      <div>High Score: <span id="highScore">0</span></div>
+    </section>
     <script src="./script.js"></script>
   </body>
 </html>

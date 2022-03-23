@@ -28,6 +28,8 @@ var myQuestions = [
 ];
 
 function anything() {
+  
+  
   var questionIndex = 0;
   var answerIndex = 0;
   var score = 0;
@@ -36,7 +38,7 @@ function anything() {
   let timerInterval;
 
   var startGameEl = document.getElementById("startGame");
-  var hideInstructionsEl = document.getElementById("instructions");
+  var hideInstructionsEl = document.getElementById("startContainer");
   var questionsEl = document.getElementById("questions");
   var answerAEl = document.getElementById("answerA");
   var answerBEl = document.getElementById("answerB");
@@ -121,6 +123,7 @@ function anything() {
   function restoreHighScore(){
     var storedHighScore = localStorage.getItem("highScoreEl");
     console.log("high score is", storedHighScore);
+    highScoreEl.textContent = storedHighScore;
   }
 
   var timeRemaining = 60;
