@@ -226,7 +226,7 @@ function setLocalStorage() {
     score: timeRemaining,
   };
 
-  storedHighScore.push(playerStats);
+  storedHighScore.push=playerStats
   localStorage.setItem("highScoreEl", JSON.stringify(storedHighScore));
 }
 
