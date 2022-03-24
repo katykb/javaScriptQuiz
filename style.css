@@ -14,9 +14,11 @@ body{
 text-align: center;
 font-size: 40px;
 position: relative;
+display: none;
 }
 
 #answerA, #answerB, #answerC, #answerD{
+    display: none;
     position: absolute;
     margin-top: 50px;
     margin-left: 550px;
@@ -30,17 +32,19 @@ position: relative;
     margin-top: 50px;
     margin-left: 600px;
     margin-right: 600px;
+    border: red dashed 5px;
     }
 
 #gamestats{
-    margin-top: 50px;
     margin-left: 25px;
     border: rgb(189, 17, 31) dashed 5px;
-    width: 200px;
+    width: 250px;
     text-align: center;
     display: felx;
     font-size: 30px;
+    display: none;
     }
+
 #countdown {
     background-color: white;
     font-size: 20px;
@@ -52,21 +56,3 @@ position: relative;
     border: solid black 5px;
 }
 
-.hidden{
-    display: none !important;
-}
-
-.correctWrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    font-size: 50px;
-    text-align: left;
-}
-
-.correct{
-    display: inline-block;
-    margin: 0 auto;
-    font-size: 40px;
-}
