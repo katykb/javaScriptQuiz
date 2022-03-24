@@ -165,8 +165,9 @@ startGameEl.addEventListener("click", function (event) {
 
 //Keeps track to correct answers
 function updateCorrectCount() {
-  correctCountEl.textContent = correctAnswerCount;
   correctAnswerCount++;
+  correctCountEl.textContent = correctAnswerCount;
+  
 }
 
 //Alerts user if their answer is correct or not
