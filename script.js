@@ -1,4 +1,3 @@
-
 //These are the game questions
 var myQuestions = [
   {
@@ -29,7 +28,7 @@ var myQuestions = [
   },
   {
     question:
-      "A lsit of related values separated by a , and is enclosed with []",
+      "A list of related values separated by a , and is enclosed with []",
     a: "Function",
     b: "Loop",
     c: "Array",
@@ -89,133 +88,136 @@ var myQuestions = [
 ];
 
 //These are the global variables
-  var questionIndex = 0;
-  var answerIndex = 0;
-  var score = 0;
-  var correctAnswerCount = 0;
+var questionIndex = 0;
+var answerIndex = 0;
+var score = 0;
+var correctAnswerCount = 0;
 
-  let timerInterval;
+let timerInterval;
 
-  var startGameEl = document.getElementById("startGame");
-  var hideInstructionsEl = document.getElementById("startContainer");
-  var questionsEl = document.getElementById("questions");
-  var answerAEl = document.getElementById("answerA");
-  var answerBEl = document.getElementById("answerB");
-  var answerCEl = document.getElementById("answerC");
-  var answerDEl = document.getElementById("answerD");
-  var gameStatsEl= document.getElementById("gamestats");
-  var correctCountEl = document.getElementById("correctCount");
-  var highScoreEl = document.getElementById("highScore");
-  var storedHighScore = localStorage.getItem("highScoreEl");
-  var highScoreInitialsEl = document.getElementById("initials");
-  var initialsSubmitButtonEl = document.getElementById("submit");
-  var leaderBoardInitialsEl = document.getElementById("leaderBoardInitials");
-  var liMaker = (text) => {
-    var li = document.createElement("li");
-    li.textContent = highScoreInitialsEl;
-    leaderBoardInitialsEl.appendChild(li);
-  };
+var startGameEl = document.getElementById("startGame");
+var hideInstructionsEl = document.getElementById("startContainer");
+var questionsEl = document.getElementById("questions");
+var answerAEl = document.getElementById("answerA");
+var answerBEl = document.getElementById("answerB");
+var answerCEl = document.getElementById("answerC");
+var answerDEl = document.getElementById("answerD");
+var gameStatsEl = document.getElementById("gamestats");
+var correctCountEl = document.getElementById("correctCount");
+var highScoreEl = document.getElementById("highScore");
+var storedHighScore = localStorage.getItem("highScoreEl");
+var highScoreInitialsEl = document.getElementById("initials");
+var initialsSubmitButtonEl = document.getElementById("submit");
+var leaderBoardInitialsEl = document.getElementById("leaderBoardInitials");
+var liMaker = (text) => {
+  var li = document.createElement("li");
+  li.textContent = highScoreInitialsEl;
+  leaderBoardInitialsEl.appendChild(li);
+};
 
-  //Event listener attached to start button to begin game
-  //Hides the instructions paragraph
-  //Displays the questions and answers
-  startGameEl.addEventListener("click", function (event) {
-    console.log("start button pressed");
-    hideInstructionsEl.style.display = "none";
-    questionsEl.style.display = "block";
-    answerAEl.style.display = "block";
-    answerBEl.style.display = "block";
-    answerCEl.style.display = "block";
-    answerDEl.style.display = "block";
-   gameStatsEl.style.display = "block";
+//Event listener attached to start button to begin game
+//Hides the instructions paragraph
+//Displays the questions and answers
+startGameEl.addEventListener("click", function (event) {
+  console.log("start button pressed");
+  hideInstructionsEl.style.display = "none";
+  questionsEl.style.display = "block";
+  answerAEl.style.display = "block";
+  answerBEl.style.display = "block";
+  answerCEl.style.display = "block";
+  answerDEl.style.display = "block";
+  gameStatsEl.style.display = "block";
 
-   
-   //Allows user to click on an answer choice, have the answer checked and then moves on to the next question
-    function handleButtonClick(event) {
-      event.preventDefault();
-      checkAnswer(event.target.innerText);
-      console.log("a choice has been pressed");
-      questionIndex++;
-      askQuestion();
-    }
 
-    answerAEl.addEventListener("click", handleButtonClick);
-    answerBEl.addEventListener("click", handleButtonClick);
-    answerCEl.addEventListener("click", handleButtonClick);
-    answerDEl.addEventListener("click", handleButtonClick);
-
-    //Goes through all questions til questions run out
-    function askQuestion() {
-      console.log(questionIndex);
-      if (questionIndex >= myQuestions.length) {
-        gameOver();
-      } else {
-        questionsEl.textContent = myQuestions[questionIndex].question;
-        answerAEl.textContent = myQuestions[questionIndex].a;
-        answerBEl.textContent = myQuestions[questionIndex].b;
-        answerCEl.textContent = myQuestions[questionIndex].c;
-        answerDEl.textContent = myQuestions[questionIndex].d;
-      }
-    }
-    //Invokes these functions
+    //Allows user to click on an answer choice, have the answer checked and then moves on to the next question
+  function handleButtonClick(event) {
+    event.preventDefault();
+    checkAnswer(event.target.innerText);
+    console.log("a choice has been pressed");
+    questionIndex++;
     askQuestion();
-    startTimer();
-    restoreHighScore();
-  });
-
-  //Keeps track to correct answers
-  function updateCorrectCount() {
-    correctCountEl.textContent = correctAnswerCount++;
-    correctAnswerCount++;
   }
 
-  //Alerts user if their answer is correct or not
-  function checkAnswer(answer) {
-    console.log(answer, myQuestions[questionIndex].correctAnswer);
-    if (answer === myQuestions[questionIndex].correctAnswer) {
-      alert("Correct!!");
-      updateCorrectCount();
+  answerAEl.addEventListener("click", handleButtonClick);
+  answerBEl.addEventListener("click", handleButtonClick);
+  answerCEl.addEventListener("click", handleButtonClick);
+  answerDEl.addEventListener("click", handleButtonClick);
+
+  
+  //Goes through all questions til questions run out
+  function askQuestion() {
+    console.log(questionIndex);
+    if (questionIndex >= myQuestions.length) {
+      gameOver();
     } else {
-      alert("Nope! That's not right.");
-      timeRemaining -= 10;
-    }
-    console.log("total answered correctly", correctAnswerCount);
-  }
-
-  //Ends the gmae and sends high score to local storage
-  function gameOver() {
-    alert("Thank you for playing!");
-    clearInterval(timerInterval);
-    localStorage.setItem("highScoreEl", correctAnswerCount);
-    if (correctAnswerCount > storedHighScore) {
+      questionsEl.textContent = myQuestions[questionIndex].question;
+      answerAEl.textContent = myQuestions[questionIndex].a;
+      answerBEl.textContent = myQuestions[questionIndex].b;
+      answerCEl.textContent = myQuestions[questionIndex].c;
+      answerDEl.textContent = myQuestions[questionIndex].d;
     }
   }
+  //Invokes these functions
+  askQuestion();
+  startTimer();
+  restoreHighScore();
+ });
 
+//Keeps track to correct answers
+function updateCorrectCount() {
+  correctCountEl.textContent = correctAnswerCount;
+  correctAnswerCount++;
+}
 
-  function restoreHighScore() {
-    var storedHighScore = localStorage.getItem("highScoreEl");
-    console.log("high score is", storedHighScore);
-    highScoreEl.textContent = storedHighScore;
+//Alerts user if their answer is correct or not
+function checkAnswer(answer) {
+  console.log(answer, myQuestions[questionIndex].correctAnswer);
+  if (answer === myQuestions[questionIndex].correctAnswer) {
+    alert("Correct!!");
+    updateCorrectCount();
+  } else {
+    alert("Nope! That's not right.");
+    timeRemaining -= 10;
+    if (timeRemaining <=0) {
+      clearInterval(timerInterval);
+      gameOver();
+    }
   }
-  initialsSubmitButtonEl.addEventListener("click", function (event) {
-    console.log("initials submited", highScoreInitialsEl);
-    liMaker(highScoreInitialsEl.value);
-    input.value = "";
-  });
+  console.log("total answered correctly", correctAnswerCount);
+}
 
-  //timer vars and function to run the timer
-  var timeRemaining = 60;
-  var timeRemainingEl = document.getElementById("countdown");
-
-  function startTimer() {
-    timerInterval = setInterval(function () {
-      timeRemaining--;
-      if (timeRemaining === 0) {
-        clearInterval(timerInterval);
-        gameOver();
-      }
-      document.getElementById("countdown").textContent = timeRemaining;
-      console.log("interval running");
-    }, 1000);
+//Ends the gmae and sends high score to local storage
+function gameOver() {
+  alert("Thank you for playing!");
+  clearInterval(timerInterval);
+  localStorage.setItem("highScoreEl", correctAnswerCount);
+  if (correctAnswerCount > storedHighScore) {
   }
+}
 
+function restoreHighScore() {
+  var storedHighScore = localStorage.getItem("highScoreEl");
+  console.log("high score is", storedHighScore);
+  highScoreEl.textContent = storedHighScore;
+}
+initialsSubmitButtonEl.addEventListener("click", function (event) {
+  console.log("initials submited", highScoreInitialsEl);
+  liMaker(highScoreInitialsEl.value);
+  input.value = "";
+});
+
+//timer vars and function to run the timer
+var timeRemaining = 60;
+var timeRemainingEl = document.getElementById("countdown");
+
+function startTimer() {
+  timerInterval = setInterval(function () {
+    timeRemaining--;
+    if (timeRemaining === 0) {
+      clearInterval(timerInterval);
+      gameOver();
+    }
+    document.getElementById("countdown").textContent = timeRemaining;
+    console.log("interval running");
+  }, 1000);
+}
