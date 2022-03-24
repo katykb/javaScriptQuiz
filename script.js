@@ -17,65 +17,65 @@ var myQuestions = [
     d: "console.log(return)",
     correctAnswer: "console.log(typeof)",
   },
-  {
-    question:
-      "What is the best definition of a varible as it pertains to JavaScript?",
-    a: "A collection of properties in the form of name and value pairs.",
-    b: "A conainer for storing data",
-    c: "An action that can be preformed on an object",
-    d: "All of the above",
-    correctAnswer: "A conainer for storing data",
-  },
-  {
-    question:
-      "A list of related values separated by a , and is enclosed with []",
-    a: "Function",
-    b: "Loop",
-    c: "Array",
-    d: "randomIndex",
-    correctAnswer: "Array",
-  },
-  {
-    question:
-      "How would you find a randomIndex assuming the name of your array is myArray?",
-    a: "Math.floor(Math.random() * myArray.length",
-    b: "Math.roof(Math.random() * myArray.length",
-    c: "Science.floor(Science.random() * myArray.length",
-    d: "None of the above",
-    correctAnswer: "Math.floor(Math.random() * myArray.length",
-  },
-  {
-    question: "Using conditional statments you can",
-    a: "Use an if statement when a condition is met",
-    b: "Use an else statement when a condition is false",
-    c: "Use an else if statement when another condition is true",
-    d: "all are true",
-    correctAnswer: "all are true",
-  },
-  {
-    question: "Functions,",
-    a: "Make parts of code reusable",
-    b: "Must be invoked to start",
-    c: "Can calculate values",
-    d: "All of these are correct",
-    correctAnswer: "All of these are correct",
-  },
-  {
-    question: "A function is invoked with",
-    a: "[]",
-    b: "(())",
-    c: "()",
-    d: "{}",
-    correctAnswer: "()",
-  },
-  {
-    question: "How many sections do for loops have?",
-    a: "5",
-    b: "2",
-    c: "42",
-    d: "3",
-    correctAnswer: "3",
-  },
+  // {
+  //   question:
+  //     "What is the best definition of a varible as it pertains to JavaScript?",
+  //   a: "A collection of properties in the form of name and value pairs.",
+  //   b: "A conainer for storing data",
+  //   c: "An action that can be preformed on an object",
+  //   d: "All of the above",
+  //   correctAnswer: "A conainer for storing data",
+  // },
+  // {
+  //   question:
+  //     "A list of related values separated by a , and is enclosed with []",
+  //   a: "Function",
+  //   b: "Loop",
+  //   c: "Array",
+  //   d: "randomIndex",
+  //   correctAnswer: "Array",
+  // },
+  // {
+  //   question:
+  //     "How would you find a randomIndex assuming the name of your array is myArray?",
+  //   a: "Math.floor(Math.random() * myArray.length",
+  //   b: "Math.roof(Math.random() * myArray.length",
+  //   c: "Science.floor(Science.random() * myArray.length",
+  //   d: "None of the above",
+  //   correctAnswer: "Math.floor(Math.random() * myArray.length",
+  // },
+  // {
+  //   question: "Using conditional statments you can",
+  //   a: "Use an if statement when a condition is met",
+  //   b: "Use an else statement when a condition is false",
+  //   c: "Use an else if statement when another condition is true",
+  //   d: "all are true",
+  //   correctAnswer: "all are true",
+  // },
+  // {
+  //   question: "Functions,",
+  //   a: "Make parts of code reusable",
+  //   b: "Must be invoked to start",
+  //   c: "Can calculate values",
+  //   d: "All of these are correct",
+  //   correctAnswer: "All of these are correct",
+  // },
+  // {
+  //   question: "A function is invoked with",
+  //   a: "[]",
+  //   b: "(())",
+  //   c: "()",
+  //   d: "{}",
+  //   correctAnswer: "()",
+  // },
+  // {
+  //   question: "How many sections do for loops have?",
+  //   a: "5",
+  //   b: "2",
+  //   c: "42",
+  //   d: "3",
+  //   correctAnswer: "3",
+  // },
   {
     question:
       "Which of the following is not one of the three sections of a for loop?",
@@ -109,11 +109,7 @@ var storedHighScore = localStorage.getItem("highScoreEl");
 var highScoreInitialsEl = document.getElementById("initials");
 var initialsSubmitButtonEl = document.getElementById("submit");
 var leaderBoardInitialsEl = document.getElementById("leaderBoardInitials");
-var liMaker = (text) => {
-  var li = document.createElement("li");
-  li.textContent = highScoreInitialsEl;
-  leaderBoardInitialsEl.appendChild(li);
-};
+
 
 //Event listener attached to start button to begin game
 //Hides the instructions paragraph
@@ -128,8 +124,7 @@ startGameEl.addEventListener("click", function (event) {
   answerDEl.style.display = "block";
   gameStatsEl.style.display = "block";
 
-
-    //Allows user to click on an answer choice, have the answer checked and then moves on to the next question
+  //Allows user to click on an answer choice, have the answer checked and then moves on to the next question
   function handleButtonClick(event) {
     event.preventDefault();
     checkAnswer(event.target.innerText);
@@ -143,7 +138,6 @@ startGameEl.addEventListener("click", function (event) {
   answerCEl.addEventListener("click", handleButtonClick);
   answerDEl.addEventListener("click", handleButtonClick);
 
-  
   //Goes through all questions til questions run out
   function askQuestion() {
     console.log(questionIndex);
@@ -161,13 +155,12 @@ startGameEl.addEventListener("click", function (event) {
   askQuestion();
   startTimer();
   restoreHighScore();
- });
+});
 
 //Keeps track to correct answers
 function updateCorrectCount() {
   correctAnswerCount++;
   correctCountEl.textContent = correctAnswerCount;
-  
 }
 
 //Alerts user if their answer is correct or not
@@ -178,8 +171,12 @@ function checkAnswer(answer) {
     updateCorrectCount();
   } else {
     alert("Nope! That's not right.");
-    timeRemaining -= 10;
-    if (timeRemaining <=0) {
+    if (!timeRemaining < 10) {
+      timeRemaining -= 10;
+    } else {
+      timeRemaining = 0;
+    }
+    if (timeRemaining <= 0) {
       clearInterval(timerInterval);
       gameOver();
     }
@@ -191,20 +188,18 @@ function checkAnswer(answer) {
 function gameOver() {
   alert("Thank you for playing!");
   clearInterval(timerInterval);
-  localStorage.setItem("highScoreEl", correctAnswerCount);
-  if (correctAnswerCount > storedHighScore) {
-  }
+  setHighScore();
 }
 
 function restoreHighScore() {
-  var storedHighScore = localStorage.getItem("highScoreEl");
-  console.log("high score is", storedHighScore);
-  highScoreEl.textContent = storedHighScore;
+  //var storedHighScore = localStorage.getItem("highScoreEl");
+  //console.log("high score is", storedHighScore);
+  //highScoreEl.textContent = storedHighScore;
 }
 initialsSubmitButtonEl.addEventListener("click", function (event) {
-  console.log("initials submited", highScoreInitialsEl);
-  liMaker(highScoreInitialsEl.value);
-  input.value = "";
+  event.preventDefault();
+  setLocalStorage();
+  leaderBoardInitialsEl.value = "";
 });
 
 //timer vars and function to run the timer
@@ -222,3 +217,25 @@ function startTimer() {
     console.log("interval running");
   }, 1000);
 }
+
+function setLocalStorage() {
+  var storedHighScore = JSON.parse(localStorage.getItem("highScoreEl")) || [];
+  if(timeRemaining<0)timeRemaining=0
+  var playerStats = {
+    initials: highScoreInitialsEl.value,
+    score: timeRemaining,
+  };
+
+  storedHighScore.push(playerStats);
+  localStorage.setItem("highScoreEl", JSON.stringify(storedHighScore));
+}
+
+function setHighScore(){
+  var storedHighScore = JSON.parse(localStorage.getItem("highScoreEl")) || [];
+  for (i=0; i<storedHighScore.length; i++){
+    var li = document.createElement("li");
+    li.textContent=storedHighScore[i].initials + ": " + storedHighScore[i].score
+    leaderBoardInitialsEl.appendChild(li);
+    }
+}
+
