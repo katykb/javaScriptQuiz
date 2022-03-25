@@ -197,9 +197,10 @@ function restoreHighScore() {
   //highScoreEl.textContent = storedHighScore;
 }
 initialsSubmitButtonEl.addEventListener("click", function (event) {
+  console.log("initails have been submitted with score")
   event.preventDefault();
   setLocalStorage();
-  leaderBoardInitialsEl.value = "";
+ highScoreInitialsEl.value = "";
 });
 
 //timer vars and function to run the timer
@@ -226,7 +227,7 @@ function setLocalStorage() {
     score: timeRemaining,
   };
 
-  storedHighScore.push=playerStats
+  storedHighScore.push(playerStats)
   localStorage.setItem("highScoreEl", JSON.stringify(storedHighScore));
 }
 
