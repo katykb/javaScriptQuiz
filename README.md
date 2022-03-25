@@ -1,6 +1,7 @@
 # javaScriptQuiz
 Project: create a quiz game application using HTML, CSS and JavaScript.
 This applicattion is a mutltiple choice quiz all about JavaScript. 
+The HTML doc was created to provide the framework of the quiz. Minimal CSS was used to style the quiz. JavaScript made the quiz interactive with the use of functions, events and allowing the user to keep a log of their scores.
 The game also utilizes local storage to save the user's score and record their initials.
 
 The quiz is live at: https://katykb.github.io/javaScriptQuiz/
