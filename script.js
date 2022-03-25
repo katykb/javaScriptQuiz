@@ -200,7 +200,7 @@ initialsSubmitButtonEl.addEventListener("click", function (event) {
   console.log("initails have been submitted with score")
   event.preventDefault();
   setLocalStorage();
- highScoreInitialsEl.value = "";
+ highScoreInitialsEl.value = "";`1a`
 });
 
 //timer vars and function to run the timer
@@ -236,7 +236,8 @@ function setHighScore(){
   for (i=0; i<storedHighScore.length; i++){
     var li = document.createElement("li");
     li.textContent=storedHighScore[i].initials + ": " + storedHighScore[i].score
-    leaderBoardInitialsEl.appendChild(li);
+    highScoreEl.appendChild(li);
     }
+
 }
 
